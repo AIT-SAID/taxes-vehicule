@@ -26,22 +26,20 @@ public class Vehicule implements Serializable {
     private String reference;
     @ManyToOne
     private TypeVehicule typeVehicule;
-    private String referenceredevable;
+    private String cinRedevable;
     private String dernierMoisPaiement;
     private double dernierMontantPaye;
     private String dernierAnneePaiement;
 
+    public String getCinRedevable() {
+        return cinRedevable;
+    }
+
+    public void setCinRedevable(String cinRedevable) {
+        this.cinRedevable = cinRedevable;
+    }
+
    
-    public String getReferenceredevable() {
-        return referenceredevable;
-    }
-
-    public void setReferenceredevable(String referenceredevable) {
-        this.referenceredevable = referenceredevable;
-    }
-
-    
-
     public String getReference() {
         return reference;
     }
