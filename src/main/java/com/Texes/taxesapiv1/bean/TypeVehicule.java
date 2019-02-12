@@ -23,24 +23,42 @@ import javax.persistence.OneToOne;
 @Entity
 public class TypeVehicule implements Serializable {
 
+    @OneToOne(mappedBy = "typeVehicule")
+    private TauxTaxeVehicule tauxTaxeVehicule;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String reference;
     private String libelle;
-    @OneToMany(mappedBy = "typeVehicule")
-    private List<TaxeVehiculeAnnuelle> tauxVehiculeAnneulles;
+
+    
     @OneToMany(mappedBy = "typeVehicule")
     private List<Vehicule> vehicules;
-    @OneToMany(mappedBy = "typeVehicule")
-    private List<TaxeVehiculeMensuelle> tauxVehiculeTrimestrielles;
-    @OneToOne(mappedBy = "typeVehicule")
-    private TauxTaxeVehicule tauxTaxeVehicule;
-    @OneToOne(mappedBy = "typeVehicule")
-    private TaxeVehiculeAnnuelle taxeVehiculeAnnuelle;
+
+    @JsonIgnore
+    public TauxTaxeVehicule getTauxTaxeVehicule() {
+        return tauxTaxeVehicule;
+    }
+
+    @JsonSetter
+    public void setTauxTaxeVehicule(TauxTaxeVehicule tauxTaxeVehicule) {
+        this.tauxTaxeVehicule = tauxTaxeVehicule;
+    }
+
+    @JsonIgnore
+    public List<Vehicule> getVehicules() {
+        return vehicules;
+    }
+
+    @JsonSetter
+    public void setVehicules(List<Vehicule> vehicules) {
+        this.vehicules = vehicules;
+    }
 
 
+    
     public String getReference() {
         return reference;
     }
@@ -74,35 +92,6 @@ public class TypeVehicule implements Serializable {
         return hash;
     }
 
-    @JsonIgnore
-    public List<TaxeVehiculeAnnuelle> getTauxVehiculeAnneulles() {
-        return tauxVehiculeAnneulles;
-    }
-
-    @JsonSetter
-    public void setTauxVehiculeAnneulles(List<TaxeVehiculeAnnuelle> tauxVehiculeAnneulles) {
-        this.tauxVehiculeAnneulles = tauxVehiculeAnneulles;
-    }
-
-    @JsonIgnore
-    public List<Vehicule> getVehicules() {
-        return vehicules;
-    }
-
-    @JsonSetter
-    public void setVehicules(List<Vehicule> vehicules) {
-        this.vehicules = vehicules;
-    }
-
-    @JsonIgnore
-    public List<TaxeVehiculeMensuelle> getTauxVehiculeTrimestrielles() {
-        return tauxVehiculeTrimestrielles;
-    }
-
-    @JsonSetter
-    public void setTauxVehiculeTrimestrielles(List<TaxeVehiculeMensuelle> tauxVehiculeTrimestrielles) {
-        this.tauxVehiculeTrimestrielles = tauxVehiculeTrimestrielles;
-    }
 
     
     @Override
