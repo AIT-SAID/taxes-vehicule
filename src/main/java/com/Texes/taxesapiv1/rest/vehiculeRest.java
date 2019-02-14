@@ -38,7 +38,7 @@ public class vehiculeRest {
 
     @GetMapping("/cin/{cin}")
     public RedevableVo findRedevableByCin(@PathVariable String cin) {
-        return redevableProxy.findByReference(cin);
+        return redevableProxy.findByCin(cin);
     }
     @GetMapping("/reference/{reference}")
     public Vehicule FindByReference(@PathVariable String reference) {

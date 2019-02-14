@@ -12,7 +12,7 @@ import com.Texes.taxesapiv1.bean.TaxeVehiculeMensuelle;
  * @author saida
  */
 public interface TaxeVehiculeMensuelleService {
-    public int creerTauxTrimestrielle(TaxeVehiculeMensuelle tauxVehiculeTrimestrielle);
+    public int creerTauxMensuelle(TaxeVehiculeMensuelle tauxVehiculeTrimestrielle);
     public TaxeVehiculeMensuelle findByReference(String reference);
     
 }

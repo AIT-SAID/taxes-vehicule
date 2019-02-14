@@ -5,7 +5,7 @@
  */
 package com.Texes.taxesapiv1.dao;
 
-import com.Texes.taxesapiv1.bean.TaxeVehiculeAnnuelle;
+import com.Texes.taxesapiv1.bean.TaxeVehiculeMensuelle;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,8 +14,8 @@ import org.springframework.stereotype.Repository;
  * @author saida
  */
 @Repository
-public interface TaxeVehiculeMensuelleDao extends JpaRepository<TaxeVehiculeAnnuelle, Long>{
+public interface TaxeVehiculeMensuelleDao extends JpaRepository<TaxeVehiculeMensuelle, Long>{
     
-    public TaxeVehiculeAnnuelle findByReference(String reference);
+    public TaxeVehiculeMensuelle findByReference(String reference);
     
 }

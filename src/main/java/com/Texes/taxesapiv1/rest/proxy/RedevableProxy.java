@@ -17,5 +17,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name = "microservice3-texes", url = "localhost:8099")
 public interface RedevableProxy {
     @GetMapping("/taxes-api/redevale/cin/{cin}")
-    public RedevableVo findByReference(@PathVariable("cin") String cin);
+    public RedevableVo findByCin(@PathVariable("cin") String cin);
 }
