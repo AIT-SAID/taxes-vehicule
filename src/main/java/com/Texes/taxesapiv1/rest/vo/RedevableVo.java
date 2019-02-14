@@ -20,7 +20,7 @@ public class RedevableVo implements Serializable {
     private String prenom;
     private String tel;
     private String email;
-    private CategorieProduitVo categorieProduitVo;
+    
 
     public String getCin() {
         return cin;
@@ -70,13 +70,5 @@ public class RedevableVo implements Serializable {
         this.email = email;
     }
 
-   
-
-    public CategorieProduitVo getCategorieProduitVo() {
-        return categorieProduitVo;
-    }
-
-    public void setCategorieProduitVo(CategorieProduitVo categorieProduitVo) {
-        this.categorieProduitVo = categorieProduitVo;
-    }
+      
 }
