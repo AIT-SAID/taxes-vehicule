@@ -35,8 +35,27 @@ public class TaxeVehiculeMensuelle implements Serializable {
     private double montantPenalite;
     private double montantMajoration;
     private double montantTaxe;
-    private int nomberMoisRestant;
+    private long nomberMoisRetard;
+    private int mois;
+    private int annee;
 
+    public int getMois() {
+        return mois;
+    }
+
+    public void setMois(int mois) {
+        this.mois = mois;
+    }
+
+    public int getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(int annee) {
+        this.annee = annee;
+    }
+
+    
     
     public Date getDatePresentation() {
         return datePresentation;
@@ -87,14 +106,15 @@ public class TaxeVehiculeMensuelle implements Serializable {
         this.montantTaxe = montantTaxe;
     }
 
-    public int getNomberMoisRestant() {
-        return nomberMoisRestant;
+    public long getNomberMoisRetard() {
+        return nomberMoisRetard;
     }
 
-    public void setNomberMoisRestant(int nomberMoisRestant) {
-        this.nomberMoisRestant = nomberMoisRestant;
+    public void setNomberMoisRetard(long nomberMoisRetard) {
+        this.nomberMoisRetard = nomberMoisRetard;
     }
 
+   
     
     public TaxeVehiculeMensuelle() {
     }
