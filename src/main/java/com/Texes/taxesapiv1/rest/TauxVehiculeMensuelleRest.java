@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author saida
  */
 @RestController
-@RequestMapping("/taxes-vehicule/taxeMensyuelles")
+@RequestMapping("/taxes-api-vehicule/taxeMensyuelles")
 public class TauxVehiculeMensuelleRest {
     
     @Autowired
@@ -35,8 +35,8 @@ public class TauxVehiculeMensuelleRest {
     }
 
     @GetMapping("/mois/{mois}/annee/{annee}")
-    public TaxeVehiculeMensuelle findByMoisByAnnee(int mois, int annee) {
-        return taxeVehiculeMensuelleService.findByMoisByAnnee(mois, annee);
+    public TaxeVehiculeMensuelle findByMoisAndAnnee(int mois, int annee) {
+        return taxeVehiculeMensuelleService.findByMoisAndAnnee(mois, annee);
     }
 
     

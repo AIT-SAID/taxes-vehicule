@@ -5,10 +5,25 @@
  */
 package com.Texes.taxesapiv1.service.impl;
 
+import com.Texes.taxesapiv1.dao.TaxeVehiculeAnnuelleDao;
+import com.Texes.taxesapiv1.service.TaxeVehiculeAnnuelleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author saida
  */
-public class TaxeVehiculeAnnuelleImpl {
+@Service
+public class TaxeVehiculeAnnuelleImpl implements TaxeVehiculeAnnuelleService{
+    
+    @Autowired
+    private TaxeVehiculeAnnuelleService taxeVehiculeAnnuelleService;
+    
+    @Autowired
+    private TaxeVehiculeAnnuelleDao taxeVehiculeAnnuelleDao;
+    
+    
+    
     
 }

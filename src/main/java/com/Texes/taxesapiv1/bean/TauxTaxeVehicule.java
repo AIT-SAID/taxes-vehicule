@@ -5,12 +5,16 @@
  */
 package com.Texes.taxesapiv1.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
@@ -21,17 +25,43 @@ import javax.persistence.Temporal;
 @Entity
 public class TauxTaxeVehicule implements Serializable {
 
+    @OneToOne(mappedBy = "tauxTaxeVehicule")
+    private TaxeVehiculeMensuelle taxeVehiculeMensuelle;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private double pourcentage;
+    private String reference;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateDebut;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateFin;
     @OneToOne
     private TypeVehicule typeVehicule;
+
+    public TaxeVehiculeMensuelle getTaxeVehiculeMensuelle() {
+        return taxeVehiculeMensuelle;
+    }
+
+    public void setTaxeVehiculeMensuelle(TaxeVehiculeMensuelle taxeVehiculeMensuelle) {
+        this.taxeVehiculeMensuelle = taxeVehiculeMensuelle;
+    }
+
+    
+
+    
+
+    
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
 
     
     

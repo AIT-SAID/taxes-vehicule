@@ -81,12 +81,6 @@ public class Vehicule implements Serializable {
     }
     
     
-
-    
-    public Vehicule() {
-    }
-
-    
     
 
     public Long getId() {

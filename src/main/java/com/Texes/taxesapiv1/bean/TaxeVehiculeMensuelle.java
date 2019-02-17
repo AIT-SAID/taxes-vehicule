@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -36,6 +37,10 @@ public class TaxeVehiculeMensuelle implements Serializable {
     private double montantMajoration;
     private double montantTaxe;
     private long nomberMoisRetard;
+  
+    
+    @OneToOne
+    private TauxTaxeVehicule tauxTaxeVehicule;
     private int mois;
     private int annee;
 
@@ -114,12 +119,18 @@ public class TaxeVehiculeMensuelle implements Serializable {
         this.nomberMoisRetard = nomberMoisRetard;
     }
 
-   
-    
-    public TaxeVehiculeMensuelle() {
+    public TauxTaxeVehicule getTauxTaxeVehicule() {
+        return tauxTaxeVehicule;
     }
 
-    
+    public void setTauxTaxeVehicule(TauxTaxeVehicule tauxTaxeVehicule) {
+        this.tauxTaxeVehicule = tauxTaxeVehicule;
+    }
+
+   
+
+   
+     
     public String getReference() {
         return reference;
     }

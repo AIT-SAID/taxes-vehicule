@@ -5,8 +5,9 @@
  */
 package com.Texes.taxesapiv1.rest;
 
-import com.Texes.taxesapiv1.bean.TypeVehicule;
-import com.Texes.taxesapiv1.service.TypeVehiculeService;
+
+import com.Texes.taxesapiv1.bean.TauxTaxeVehicule;
+import com.Texes.taxesapiv1.service.TauxTaxeVehiculeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,30 +21,30 @@ import org.springframework.web.bind.annotation.RestController;
  * @author saida
  */
 @RestController
-@RequestMapping("/taxes-api-vehicule/typeVehicules")
-public class TypeVehiculeRest {
+@RequestMapping("/taxes_vehicule/tauxtaxeVehicules")
+public class TauxTaxeVehiculeRest {
     
     @Autowired
-    private TypeVehiculeService typeVehiculeService;
+    private TauxTaxeVehiculeService tauxTaxeVehiculeService;
 
     @PostMapping("/")
-    public int creerTypeVehicule(@RequestBody TypeVehicule typeVehicule) {
-        return typeVehiculeService.creerTypeVehicule(typeVehicule);
+    public int creerTauxTaxeVehicule(@RequestBody TauxTaxeVehicule tauxTaxeVehicule) {
+        return tauxTaxeVehiculeService.creerTauxTaxeVehicule(tauxTaxeVehicule);
     }
 
     @GetMapping("/reference/{reference}")
-    public TypeVehicule findByReference(@PathVariable String reference) {
-        return typeVehiculeService.findByReference(reference);
+    public TauxTaxeVehicule findByReference(@PathVariable String reference) {
+        return tauxTaxeVehiculeService.findByReference(reference);
     }
 
+    public TauxTaxeVehiculeService getTauxTaxeVehiculeService() {
+        return tauxTaxeVehiculeService;
+    }
+
+    public void setTauxTaxeVehiculeService(TauxTaxeVehiculeService tauxTaxeVehiculeService) {
+        this.tauxTaxeVehiculeService = tauxTaxeVehiculeService;
+    }
     
-    public TypeVehiculeService getTypeVehiculeService() {
-        return typeVehiculeService;
-    }
-
-    public void setTypeVehiculeService(TypeVehiculeService typeVehiculeService) {
-        this.typeVehiculeService = typeVehiculeService;
-    }
     
     
     

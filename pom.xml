@@ -11,7 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>taxes-vehicule</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>taxes-vehicule</name>
+	<name>taxes-api-vehicule</name>
 	<description>Demo taxes-vehicule project for Spring Boot</description>
 
 	<properties>

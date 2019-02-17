@@ -6,6 +6,7 @@
 package com.Texes.taxesapiv1.service.impl;
 
 import ch.qos.logback.core.pattern.ConverterUtil;
+import com.Texes.taxesapiv1.bean.TauxTaxeVehicule;
 import com.Texes.taxesapiv1.bean.TaxeVehiculeMensuelle;
 import com.Texes.taxesapiv1.dao.TaxeVehiculeMensuelleDao;
 import com.Texes.taxesapiv1.service.TaxeVehiculeMensuelleService;
@@ -28,7 +29,7 @@ public class TaxeVehiculeMensuelleImp implements TaxeVehiculeMensuelleService {
 
     @Override
     public int creerTaxeMensuelle(TaxeVehiculeMensuelle taxeVehiculeMensuelle) {
-        TaxeVehiculeMensuelle t = findByMoisByAnnee(taxeVehiculeMensuelle.getMois(), taxeVehiculeMensuelle.getAnnee());
+        TaxeVehiculeMensuelle t = findByMoisAndAnnee(taxeVehiculeMensuelle.getMois(), taxeVehiculeMensuelle.getAnnee());
         if (t != null) {
             return -1;
         } else {
@@ -38,8 +39,9 @@ public class TaxeVehiculeMensuelleImp implements TaxeVehiculeMensuelleService {
             long nbMoisRetard = val / mois;
                 taxeVehiculeMensuelle.setNomberMoisRetard(nbMoisRetard);
             long moisRetard = taxeVehiculeMensuelle.getNomberMoisRetard();
+            
 
-            Double montantBase = taxeVehiculeMensuelle.getChiffreAffaire() * taxeVehiculeMensuelle.getTauxtrimestrielle().getPourcentage() / 100;
+            Double montantBase = taxeVehiculeMensuelle.getChiffreAffaire() * taxeVehiculeMensuelle.getTauxTaxeVehicule().getPourcentage() / 100;
             taxeVehiculeMensuelle.setMontantBase(montantBase);
 
             if (moisRetard == 0) {
@@ -65,14 +67,20 @@ public class TaxeVehiculeMensuelleImp implements TaxeVehiculeMensuelleService {
         }
     }
     @Override
-    public TaxeVehiculeMensuelle findByMoisByAnnee(int mois, int annee) {
-        return taxeVehiculeMensuelleDao.findByMoisByAnnee(mois, annee);
-    }
+   public TaxeVehiculeMensuelle findByMoisAndAnnee(int mois, int annee) {
+       return taxeVehiculeMensuelleDao.findByMoisAndAnnee(mois, annee);
+   }
 
     @Override
     public TaxeVehiculeMensuelle findByReference(String reference) {
         return taxeVehiculeMensuelleDao.findByReference(reference);
     }
+    
+//    @Override
+//    public TaxeVehiculeMensuelle findByMoisAndAnnee(int mois, int annee) {
+//        return taxeVehiculeMensuelleDao.findByMoisByAnnee(mois, annee);
+//        
+//    }
 
     public TaxeVehiculeMensuelleService getTaxeVehiculeMensuelleService() {
         return taxeVehiculeMensuelleService;
@@ -89,5 +97,11 @@ public class TaxeVehiculeMensuelleImp implements TaxeVehiculeMensuelleService {
     public void setTaxeVehiculeMensuelleDao(TaxeVehiculeMensuelleDao taxeVehiculeMensuelleDao) {
         this.taxeVehiculeMensuelleDao = taxeVehiculeMensuelleDao;
     }
+
+    
+
+    
+
+    
 
 }
