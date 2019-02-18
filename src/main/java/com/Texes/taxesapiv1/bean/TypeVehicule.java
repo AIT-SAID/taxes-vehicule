@@ -23,9 +23,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class TypeVehicule implements Serializable {
 
-    @OneToOne(mappedBy = "typeVehicule")
-    private TauxTaxeVehicule tauxTaxeVehicule;
-
+   
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,16 +35,21 @@ public class TypeVehicule implements Serializable {
     @OneToMany(mappedBy = "typeVehicule")
     private List<Vehicule> vehicules;
 
-    @JsonIgnore
-    public TauxTaxeVehicule getTauxTaxeVehicule() {
-        return tauxTaxeVehicule;
+     @OneToMany(mappedBy = "typeVehicule")
+    private List<TauxTaxeVehicule> tauxTaxeVehicules;
+
+    public List<TauxTaxeVehicule> getTauxTaxeVehicules() {
+        return tauxTaxeVehicules;
     }
 
-    @JsonSetter
-    public void setTauxTaxeVehicule(TauxTaxeVehicule tauxTaxeVehicule) {
-        this.tauxTaxeVehicule = tauxTaxeVehicule;
+    public void setTauxTaxeVehicules(List<TauxTaxeVehicule> tauxTaxeVehicules) {
+        this.tauxTaxeVehicules = tauxTaxeVehicules;
     }
 
+    
+
+     
+    
     @JsonIgnore
     public List<Vehicule> getVehicules() {
         return vehicules;
