@@ -9,11 +9,13 @@ import com.Texes.taxesapiv1.bean.TauxTaxeVehicule;
 import com.Texes.taxesapiv1.dao.TauxTaxeVehiculedao;
 import com.Texes.taxesapiv1.service.TauxTaxeVehiculeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author saida
  */
+@Service
 public class TauxTaxeVehiculeImpl implements TauxTaxeVehiculeService{
 
     @Autowired 
@@ -32,7 +34,7 @@ public class TauxTaxeVehiculeImpl implements TauxTaxeVehiculeService{
 
     @Override
     public TauxTaxeVehicule findByReference(String reference) {
-        return tauxTaxeVehiculeDao.finByReference(reference);
+        return tauxTaxeVehiculeDao.findByReference(reference);
     }
 
     public TauxTaxeVehiculedao getTauxTaxeVehiculeDao() {

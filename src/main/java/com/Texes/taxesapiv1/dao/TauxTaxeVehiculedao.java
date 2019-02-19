@@ -14,6 +14,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface TauxTaxeVehiculedao extends JpaRepository<TauxTaxeVehicule, Long>{
     
-    public TauxTaxeVehicule finByReference(String reference);
+    public TauxTaxeVehicule findByReference(String reference);
     
 }

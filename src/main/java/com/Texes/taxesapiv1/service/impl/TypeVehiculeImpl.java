@@ -18,21 +18,17 @@ import org.springframework.stereotype.Service;
  * @author saida
  */
 @Service
-public class TypeVehiculeImpl implements TypeVehiculeService{
+public class TypeVehiculeImpl implements TypeVehiculeService {
 
     @Autowired
     private TypeVehiculeDao typeVehiculeDao;
-    @Autowired
-    private TauxTaxeVehiculeService tauxTaxeVehiculeService;
+  
     @Override
     public int creerTypeVehicule(TypeVehicule typeVehicule) {
-        TypeVehicule type=findByReference(typeVehicule.getReference());
-        if(type!=null){
+        TypeVehicule type = findByReference(typeVehicule.getReference());
+        if (type != null) {
             return -1;
-        }else{
-            TauxTaxeVehicule tauxTaxeVehicule = new TauxTaxeVehicule();
-            tauxTaxeVehicule.setTypeVehicule(typeVehicule);
-            tauxTaxeVehiculeService.creerTauxTaxeVehicule(tauxTaxeVehicule);
+        } else {
             typeVehiculeDao.save(typeVehicule);
             return 1;
         }
@@ -40,9 +36,8 @@ public class TypeVehiculeImpl implements TypeVehiculeService{
 
     @Override
     public TypeVehicule findByReference(String reference) {
-
         return typeVehiculeDao.findByReference(reference);
-        }
+    }
 
     public TypeVehiculeDao getTypeVehiculeDao() {
         return typeVehiculeDao;
@@ -51,6 +46,5 @@ public class TypeVehiculeImpl implements TypeVehiculeService{
     public void setTypeVehiculeDao(TypeVehiculeDao typeVehiculeDao) {
         this.typeVehiculeDao = typeVehiculeDao;
     }
-    
-    
+
 }
