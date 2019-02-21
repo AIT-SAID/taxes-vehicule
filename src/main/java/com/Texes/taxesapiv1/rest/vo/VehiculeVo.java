@@ -13,12 +13,15 @@ import java.io.Serializable;
  */
 public class VehiculeVo implements Serializable{
     
+        private static final long serialVersionUID = 1L;
+
     private String reference;
     private String cinRedevable;
     private String dernierMoisPaiement;
     private String dernierMontantPaye;
     private String dernierAnneePaiement;
 
+    
     public String getReference() {
         return reference;
     }

@@ -29,7 +29,7 @@ public class Vehicule implements Serializable {
     private String cinRedevable;
     private String dernierMoisPaiement;
     private double dernierMontantPaye;
-    private String dernierAnneePaiement;
+    private double dernierAnneePaiement;
 
     public String getCinRedevable() {
         return cinRedevable;
@@ -64,7 +64,7 @@ public class Vehicule implements Serializable {
         this.dernierMoisPaiement = dernierMoisPaiement;
     }
 
-    public double getDernierMontantPaye() {
+   public double getDernierMontantPaye() {
         return dernierMontantPaye;
     }
 
@@ -72,13 +72,14 @@ public class Vehicule implements Serializable {
         this.dernierMontantPaye = dernierMontantPaye;
     }
 
-    public String getDernierAnneePaiement() {
+    public double getDernierAnneePaiement() {
         return dernierAnneePaiement;
     }
 
-    public void setDernierAnneePaiement(String dernierAnneePaiement) {
+    public void setDernierAnneePaiement(double dernierAnneePaiement) {
         this.dernierAnneePaiement = dernierAnneePaiement;
     }
+
     
     
     

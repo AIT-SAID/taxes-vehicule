@@ -29,8 +29,8 @@ public class TauxTaxeVehiculeRest {
    private TauxTaxeVehiculeService tauxTaxeVehiculeService;
 
     @PostMapping("/")
-    public int creerTauxTaxeVehicule(@RequestBody TauxTaxeVehiculeVo tauxTaxeVehiculeVo) {
-        return tauxTaxeVehiculeService.creerTauxTaxeVehicule(tauxTaxeVehiculeVo);
+    public int creerTauxTaxeVehicule(@RequestBody TauxTaxeVehicule tauxTaxeVehicule) {
+        return tauxTaxeVehiculeService.creerTauxTaxeVehicule(tauxTaxeVehicule);
    }
 
     @GetMapping("/reference/{reference}")

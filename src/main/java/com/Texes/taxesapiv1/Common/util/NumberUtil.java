@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Texes.taxesapiv1.util;
+package com.Texes.taxesapiv1.Common.util;
 
 import java.math.BigDecimal;
 
@@ -23,7 +23,7 @@ public class NumberUtil {
             return new BigDecimal(value);
         }
     }
-    public static String toString(BigDecimal value){
+    public static String toString(Object value){
         if(value==null){
             return CHAINE_VIDE;
         }else{
