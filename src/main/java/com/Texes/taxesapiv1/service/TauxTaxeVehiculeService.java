@@ -16,5 +16,6 @@ public interface TauxTaxeVehiculeService {
     
     public int creerTauxTaxeVehicule(TauxTaxeVehicule tauxTaxeVehicule);
     public TauxTaxeVehicule findByReference(String reference);
+    public TauxTaxeVehicule findByTypeVehiculeReference(String reference);
     
 }

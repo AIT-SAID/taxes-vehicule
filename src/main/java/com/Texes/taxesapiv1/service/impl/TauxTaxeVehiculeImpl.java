@@ -26,11 +26,17 @@ public class TauxTaxeVehiculeImpl implements TauxTaxeVehiculeService{
         if(tauxtax!=null){
             return -1;
         }else{
-            tauxTaxeVehiculeDao.save(tauxtax);
+            tauxTaxeVehiculeDao.save(tauxTaxeVehicule);
             return 1;
         }
         
     }
+    
+    @Override
+    public TauxTaxeVehicule findByTypeVehiculeReference(String reference) {
+        return tauxTaxeVehiculeDao.findByTypeVehiculeReference(reference);
+    }
+    
 
     @Override
     public TauxTaxeVehicule findByReference(String reference) {
@@ -44,6 +50,7 @@ public class TauxTaxeVehiculeImpl implements TauxTaxeVehiculeService{
     public void setTauxTaxeVehiculeDao(TauxTaxeVehiculedao tauxTaxeVehiculeDao) {
         this.tauxTaxeVehiculeDao = tauxTaxeVehiculeDao;
     }
+
     
     
 }

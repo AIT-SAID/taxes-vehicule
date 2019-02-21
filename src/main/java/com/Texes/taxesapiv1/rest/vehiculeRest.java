@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author saida
  */
 @RestController
-@RequestMapping("/taxes-api-vehicule/vehicules")
+@RequestMapping("/taxes-vehicule/vehicules")
 public class vehiculeRest {
     
     @Autowired

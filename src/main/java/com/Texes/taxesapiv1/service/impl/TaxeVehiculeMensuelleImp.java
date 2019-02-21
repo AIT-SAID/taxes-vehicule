@@ -9,6 +9,7 @@ import ch.qos.logback.core.pattern.ConverterUtil;
 import com.Texes.taxesapiv1.bean.TauxTaxeVehicule;
 import com.Texes.taxesapiv1.bean.TaxeVehiculeMensuelle;
 import com.Texes.taxesapiv1.dao.TaxeVehiculeMensuelleDao;
+import com.Texes.taxesapiv1.service.TauxTaxeVehiculeService;
 import com.Texes.taxesapiv1.service.TaxeVehiculeMensuelleService;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class TaxeVehiculeMensuelleImp implements TaxeVehiculeMensuelleService {
     @Autowired
     private TaxeVehiculeMensuelleService taxeVehiculeMensuelleService;
 
+    @Autowired
+    private TauxTaxeVehiculeService tauxTaxeVehiculeService;
+    
     @Autowired
     private TaxeVehiculeMensuelleDao taxeVehiculeMensuelleDao;
 
@@ -41,7 +45,8 @@ public class TaxeVehiculeMensuelleImp implements TaxeVehiculeMensuelleService {
             long moisRetard = taxeVehiculeMensuelle.getNomberMoisRetard();
             
 
-            Double montantBase = taxeVehiculeMensuelle.getChiffreAffaire() * taxeVehiculeMensuelle.getTauxTaxeVehicule().getPourcentage() / 100;
+            TauxTaxeVehicule taux=tauxTaxeVehiculeService.findByTypeVehiculeReference(taxeVehiculeMensuelle.getTypeVehicule().getReference());
+            Double montantBase = taxeVehiculeMensuelle.getChiffreAffaire() * taux.getPourcentage() / 100;
             taxeVehiculeMensuelle.setMontantBase(montantBase);
 
             if (moisRetard == 0) {
