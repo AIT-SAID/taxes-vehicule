@@ -6,8 +6,10 @@
 package com.Texes.taxesapiv1.rest;
 
 import com.Texes.taxesapiv1.bean.Vehicule;
+import com.Texes.taxesapiv1.rest.converter.VehiculeConverter;
 import com.Texes.taxesapiv1.rest.proxy.RedevableProxy;
 import com.Texes.taxesapiv1.rest.vo.RedevableVo;
+import com.Texes.taxesapiv1.rest.vo.VehiculeVo;
 import com.Texes.taxesapiv1.service.VehiculeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,10 +32,14 @@ public class vehiculeRest {
     
     @Autowired
     private RedevableProxy redevableProxy;
+    @Autowired
+    private VehiculeConverter vehiculeConverter;
 
     @PostMapping("/")
-    public int creerVehicule(@RequestBody Vehicule vehicule) {
-        return vehiculeService.creerVehicule(vehicule);
+    public int creerVehicule(@RequestBody VehiculeVo vehiculeVo) {
+        Vehicule vehicule=vehiculeConverter.toItem(vehiculeVo);
+    int v=vehiculeService.creerVehicule(vehicule);
+    return v;
     }
 
     @GetMapping("/cin/{cin}")
@@ -57,10 +63,7 @@ public class vehiculeRest {
     public void setRedevableProxy(RedevableProxy redevableProxy) {
         this.redevableProxy = redevableProxy;
     }
-    
-
-    
-    
+  
     public VehiculeService getVehiculeService() {
         return vehiculeService;
     }
@@ -68,6 +71,15 @@ public class vehiculeRest {
     public void setVehiculeService(VehiculeService vehiculeService) {
         this.vehiculeService = vehiculeService;
     }
+
+    public VehiculeConverter getVehiculeConverter() {
+        return vehiculeConverter;
+    }
+
+    public void setVehiculeConverter(VehiculeConverter vehiculeConverter) {
+        this.vehiculeConverter = vehiculeConverter;
+    }
+    
     
     
     

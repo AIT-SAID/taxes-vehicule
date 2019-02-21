@@ -56,5 +56,14 @@ public class TauxTaxeVehiculeRest {
     public void setTauxTaxeVehiculeService(TauxTaxeVehiculeService tauxTaxeVehiculeService) {
         this.tauxTaxeVehiculeService = tauxTaxeVehiculeService;
     }
+
+    public TauxTaxeVehiculeConverter getTauxTaxeVehiculeConverter() {
+        return tauxTaxeVehiculeConverter;
+    }
+
+    public void setTauxTaxeVehiculeConverter(TauxTaxeVehiculeConverter tauxTaxeVehiculeConverter) {
+        this.tauxTaxeVehiculeConverter = tauxTaxeVehiculeConverter;
+    }
    
+    
 }
