@@ -7,6 +7,7 @@ package com.Texes.taxesapiv1.rest;
 //
 //
 import com.Texes.taxesapiv1.bean.TauxTaxeVehicule;
+import com.Texes.taxesapiv1.rest.converter.TauxTaxeVehiculeConverter;
 import com.Texes.taxesapiv1.rest.vo.TauxTaxeVehiculeVo;
 import com.Texes.taxesapiv1.service.TauxTaxeVehiculeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +27,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class TauxTaxeVehiculeRest {
     
     @Autowired
-   private TauxTaxeVehiculeService tauxTaxeVehiculeService;
+    private TauxTaxeVehiculeService tauxTaxeVehiculeService;
+    @Autowired
+    private TauxTaxeVehiculeConverter tauxTaxeVehiculeConverter;
 
     @PostMapping("/")
-    public int creerTauxTaxeVehicule(@RequestBody TauxTaxeVehicule tauxTaxeVehicule) {
-        return tauxTaxeVehiculeService.creerTauxTaxeVehicule(tauxTaxeVehicule);
+    public int creerTauxTaxeVehicule(@RequestBody TauxTaxeVehiculeVo tauxTaxeVehiculeVo) {
+        TauxTaxeVehicule tauxTaxeVehicule=tauxTaxeVehiculeConverter.toItem(tauxTaxeVehiculeVo);
+    int   taux=tauxTaxeVehiculeService.creerTauxTaxeVehicule(tauxTaxeVehicule);
+    return taux;
    }
 
     @GetMapping("/reference/{reference}")

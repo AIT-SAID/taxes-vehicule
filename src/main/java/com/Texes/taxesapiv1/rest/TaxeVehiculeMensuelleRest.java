@@ -6,6 +6,8 @@
 package com.Texes.taxesapiv1.rest;
 
 import com.Texes.taxesapiv1.bean.TaxeVehiculeMensuelle;
+import com.Texes.taxesapiv1.rest.converter.TaxeVehiculeMensuelleConverter;
+import com.Texes.taxesapiv1.rest.vo.TaxeVehiculeMensuelleVo;
 import com.Texes.taxesapiv1.service.TaxeVehiculeMensuelleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,19 +23,24 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/taxes-vehicule/taxeMensuelles")
-public class TauxVehiculeMensuelleRest {
+public class TaxeVehiculeMensuelleRest {
     
     @Autowired
     private TaxeVehiculeMensuelleService taxeVehiculeMensuelleService;
 
+    @Autowired
+    private TaxeVehiculeMensuelleConverter taxeVehiculeMensuelleConverter;
+            
     @GetMapping("/reference/{reference}")
     public TaxeVehiculeMensuelle findByReference(@PathVariable String reference) {
         return taxeVehiculeMensuelleService.findByReference(reference);
     }
 
     @PostMapping("/")
-    public int creerTaxeMensuelle(@RequestBody TaxeVehiculeMensuelle tauxVehiculeMensuelle) {
-        return taxeVehiculeMensuelleService.creerTaxeMensuelle(tauxVehiculeMensuelle);
+    public int creerTaxeMensuelle(@RequestBody TaxeVehiculeMensuelleVo tauxVehiculeMensuelleVo) {
+        TaxeVehiculeMensuelle taxeVehiculeMensuelle=taxeVehiculeMensuelleConverter.toItem(tauxVehiculeMensuelleVo);
+        int t=taxeVehiculeMensuelleService.creerTaxeMensuelle(taxeVehiculeMensuelle);
+        return t;
     }
 
     @GetMapping("/mois/{mois}/annee/{annee}")
@@ -48,6 +55,14 @@ public class TauxVehiculeMensuelleRest {
 
     public void setTaxeVehiculeMensuelleService(TaxeVehiculeMensuelleService taxeVehiculeMensuelleService) {
         this.taxeVehiculeMensuelleService = taxeVehiculeMensuelleService;
+    }
+
+    public TaxeVehiculeMensuelleConverter getTaxeVehiculeMensuelleConverter() {
+        return taxeVehiculeMensuelleConverter;
+    }
+
+    public void setTaxeVehiculeMensuelleConverter(TaxeVehiculeMensuelleConverter taxeVehiculeMensuelleConverter) {
+        this.taxeVehiculeMensuelleConverter = taxeVehiculeMensuelleConverter;
     }
     
     
