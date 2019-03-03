@@ -18,7 +18,7 @@ import com.Texes.taxesapiv1.service.TaxeVehiculeAnnuelleService;
  * @author saida
  */
 //@RestController
-//@RequestMapping("/taxes-api-v1/tauxVehiculeAnnuelles")
+//@RequestMapping("/taxes-api-v1/taxeAnnuelles")
 public class TaxeVehiculeAnnuelleRest {
     
 //    @Autowired

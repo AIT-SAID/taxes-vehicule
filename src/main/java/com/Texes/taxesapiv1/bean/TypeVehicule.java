@@ -23,6 +23,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class TypeVehicule implements Serializable {
 
+    
    
     private static final long serialVersionUID = 1L;
     @Id
@@ -30,8 +31,6 @@ public class TypeVehicule implements Serializable {
     private Long id;
     private String reference;
     private String libelle;
-
-    
     @OneToMany(mappedBy = "typeVehicule")
     private List<Vehicule> vehicules;
 
@@ -46,10 +45,6 @@ public class TypeVehicule implements Serializable {
         this.tauxTaxeVehicules = tauxTaxeVehicules;
     }
 
-    
-
-     
-    
     @JsonIgnore
     public List<Vehicule> getVehicules() {
         return vehicules;

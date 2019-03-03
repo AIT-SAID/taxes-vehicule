@@ -27,8 +27,6 @@ public class TaxeVehiculeMensuelle implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String reference;
-    @ManyToOne
-    private TypeVehicule typeVehicule;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date datePresentation;
     private double chiffreAffaire;
@@ -138,15 +136,6 @@ public class TaxeVehiculeMensuelle implements Serializable {
     public void setReference(String reference) {
         this.reference = reference;
     }
-
-    public TypeVehicule getTypeVehicule() {
-        return typeVehicule;
-    }
-
-    public void setTypeVehicule(TypeVehicule typeVehicule) {
-        this.typeVehicule = typeVehicule;
-    }
-
     
 
     public Long getId() {

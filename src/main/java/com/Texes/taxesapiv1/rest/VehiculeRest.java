@@ -8,13 +8,13 @@ package com.Texes.taxesapiv1.rest;
 import com.Texes.taxesapiv1.bean.TypeVehicule;
 import com.Texes.taxesapiv1.bean.Vehicule;
 import com.Texes.taxesapiv1.rest.converter.AbstractConverter;
+import com.Texes.taxesapiv1.rest.converter.VehiculeConverter;
+import com.Texes.taxesapiv1.rest.proxy.RedevableProxy;
+import com.Texes.taxesapiv1.rest.vo.RedevableVo;
 import com.Texes.taxesapiv1.rest.vo.VehiculeVo;
-import com.Texes.taxesapiv1.service.TypeVehiculeService;
 import com.Texes.taxesapiv1.service.VehiculeService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,48 +27,48 @@ import org.springframework.web.bind.annotation.RestController;
  * @author saida
  */
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("/taxes_vehicule/typeVehicules")
-public class TypeVehiculeRest {
-    
-    @Autowired
-    private TypeVehiculeService typeVehiculeService;
+@RequestMapping("/taxes-vehicule/vehicules")
+public class VehiculeRest {
     
     @Autowired
     private VehiculeService vehiculeService;
-
-    @PostMapping("/")
-    public int creerTypeVehicule(@RequestBody TypeVehicule typeVehicule) {
-        return typeVehiculeService.creerTypeVehicule(typeVehicule);
-    }
-
-    @GetMapping("/reference/{reference}")
-    public TypeVehicule findByReference(@PathVariable String reference) {
-        return typeVehiculeService.findByReference(reference);
-    }
-
-    @GetMapping("/reference/{reference}/taxes-api-vehicule")
-    public List<TypeVehicule> findAll() {
-        return typeVehiculeService.findAll();
-    }
+    
     @Autowired
-    @Qualifier("vehiculeConverter")
-    private AbstractConverter<Vehicule,VehiculeVo> vehiculeConverter;
+    private RedevableProxy redevableProxy;
+    
+
+    
+    private AbstractConverter<Vehicule,VehiculeVo> vehiculeConverter= new VehiculeConverter();
+   
+    @PostMapping("/")
+    public int creerVehicule(@RequestBody VehiculeVo vehiculeVo) {
+        Vehicule vehicule=vehiculeConverter.toItem(vehiculeVo);
+    int v=vehiculeService.creerVehicule(vehicule);
+    return v;
+    }
+  
+    @GetMapping("/cin/{cin}")
+    public RedevableVo findRedevableByCin(@PathVariable String cin) {
+        return redevableProxy.findByCin(cin);
+    }
+    @GetMapping("/reference/{reference}")
+    public Vehicule FindByReference(@PathVariable String reference) {
+        return vehiculeService.FindByReference(reference);
+    }
 
     @GetMapping("/")
-    public List<VehiculeVo> findByTypeVehiculeReference(@PathVariable("reference") String reference) {
-         final List<Vehicule> vehicules= vehiculeService.findByTypeVehiculeReference(reference);
-         return vehiculeConverter.toVo(vehicules);
-    }
-    
-    public TypeVehiculeService getTypeVehiculeService() {
-        return typeVehiculeService;
+    public List<VehiculeVo> findByTypeVehiculeReference(String reference) {
+        return vehiculeConverter.toVo(vehiculeService.findByTypeVehiculeReference(reference));
     }
 
-    public void setTypeVehiculeService(TypeVehiculeService typeVehiculeService) {
-        this.typeVehiculeService = typeVehiculeService;
+    public RedevableProxy getRedevableProxy() {
+        return redevableProxy;
     }
 
+    public void setRedevableProxy(RedevableProxy redevableProxy) {
+        this.redevableProxy = redevableProxy;
+    }
+  
     public VehiculeService getVehiculeService() {
         return vehiculeService;
     }
@@ -84,8 +84,12 @@ public class TypeVehiculeRest {
     public void setVehiculeConverter(AbstractConverter<Vehicule, VehiculeVo> vehiculeConverter) {
         this.vehiculeConverter = vehiculeConverter;
     }
+
+    
+    
+    }
     
     
     
     
-}
+

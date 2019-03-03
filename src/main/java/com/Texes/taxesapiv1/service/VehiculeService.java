@@ -5,6 +5,7 @@
  */
 package com.Texes.taxesapiv1.service;
 
+import com.Texes.taxesapiv1.bean.TypeVehicule;
 import com.Texes.taxesapiv1.bean.Vehicule;
 import java.util.List;
 
@@ -13,8 +14,9 @@ import java.util.List;
  * @author saida
  */
 public interface VehiculeService {
-    //public List<Vehicule> findByRedevableCin(String reference);
+    public List<Vehicule> findByTypeVehiculeReference(String reference);
     public int creerVehicule(Vehicule vehicule);
     public Vehicule FindByReference(String reference);
+   
     
 }

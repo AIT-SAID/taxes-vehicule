@@ -26,21 +26,23 @@ public class VehiculeImpl implements VehiculeService {
 
     @Override
     public int creerVehicule(Vehicule vehicule) {
-            vehiculedao.save(vehicule);
+        Vehicule v  =FindByReference(vehicule.getReference());
+                if(v!=null){
+    return -1 ;}else  {
+            vehiculedao.save(vehicule);}
         return 1;
     }
 
     
-
     @Override
     public Vehicule FindByReference(String reference) {
         return vehiculedao.findByReference(reference);
     }
 
-//    @Override
-//    public List<Vehicule> findByRedevableCin(String reference) {
-//        return vehiculedao.findByRedevableCin(reference);
-//    }
+    @Override
+    public List<Vehicule> findByTypeVehiculeReference(String reference) {
+        return vehiculedao.findByTypeVehiculeReference(reference);
+    }
     public VehiculeDao getVehiculedao() {
         return vehiculedao;
     }
@@ -48,6 +50,8 @@ public class VehiculeImpl implements VehiculeService {
     public void setVehiculedao(VehiculeDao vehiculedao) {
         this.vehiculedao = vehiculedao;
     }
+
+    
 
     
     

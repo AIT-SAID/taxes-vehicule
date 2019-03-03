@@ -45,7 +45,7 @@ public class TaxeVehiculeMensuelleImp implements TaxeVehiculeMensuelleService {
             long moisRetard = taxeVehiculeMensuelle.getNomberMoisRetard();
             
 
-            TauxTaxeVehicule taux=tauxTaxeVehiculeService.findByTypeVehiculeReference(taxeVehiculeMensuelle.getTypeVehicule().getReference());
+            TauxTaxeVehicule taux=tauxTaxeVehiculeService.findByTypeVehiculeReference(taxeVehiculeMensuelle.getTauxTaxeVehicule().getTypeVehicule().getReference());
             Double montantBase = taxeVehiculeMensuelle.getChiffreAffaire() * taux.getPourcentage() / 100;
             taxeVehiculeMensuelle.setMontantBase(montantBase);
 
