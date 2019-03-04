@@ -20,6 +20,7 @@ public class VehiculeImpl implements VehiculeService {
 
     @Autowired
     private VehiculeDao vehiculedao;
+
     @Override
     public int creerVehicule(Vehicule vehicule) {
         Vehicule v  =FindByReference(vehicule.getReference());
