@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package com.Texes.taxesapiv1.service.impl;
-
-import com.Texes.taxesapiv1.bean.TypeVehicule;
 import com.Texes.taxesapiv1.bean.Vehicule;
 import com.Texes.taxesapiv1.dao.VehiculeDao;
 import com.Texes.taxesapiv1.service.VehiculeService;
@@ -22,8 +20,6 @@ public class VehiculeImpl implements VehiculeService {
 
     @Autowired
     private VehiculeDao vehiculedao;
-          
-
     @Override
     public int creerVehicule(Vehicule vehicule) {
         Vehicule v  =FindByReference(vehicule.getReference());
