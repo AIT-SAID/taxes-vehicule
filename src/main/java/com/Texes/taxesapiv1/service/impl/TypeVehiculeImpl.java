@@ -5,11 +5,10 @@
  */
 package com.Texes.taxesapiv1.service.impl;
 
-import com.Texes.taxesapiv1.bean.TauxTaxeVehicule;
 import com.Texes.taxesapiv1.bean.TypeVehicule;
 import com.Texes.taxesapiv1.dao.TypeVehiculeDao;
-import com.Texes.taxesapiv1.service.TauxTaxeVehiculeService;
 import com.Texes.taxesapiv1.service.TypeVehiculeService;
+import com.Texes.taxesapiv1.service.VehiculeService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,16 +22,20 @@ public class TypeVehiculeImpl implements TypeVehiculeService {
 
     @Autowired
     private TypeVehiculeDao typeVehiculeDao;
+    
+    @Autowired
+    private VehiculeService vehiculeService;
   
     @Override
     public int creerTypeVehicule(TypeVehicule typeVehicule) {
-        TypeVehicule type = findByReference(typeVehicule.getReference());
+      TypeVehicule type = findByReference(typeVehicule.getReference());
         if (type != null) {
             return -1;
         } else {
             typeVehiculeDao.save(typeVehicule);
             return 1;
         }
+        
     }
 @Override
     public List<TypeVehicule> findAll() {
@@ -50,6 +53,14 @@ public class TypeVehiculeImpl implements TypeVehiculeService {
 
     public void setTypeVehiculeDao(TypeVehiculeDao typeVehiculeDao) {
         this.typeVehiculeDao = typeVehiculeDao;
+    }
+
+    public VehiculeService getVehiculeService() {
+        return vehiculeService;
+    }
+
+    public void setVehiculeService(VehiculeService vehiculeService) {
+        this.vehiculeService = vehiculeService;
     }
 
     
