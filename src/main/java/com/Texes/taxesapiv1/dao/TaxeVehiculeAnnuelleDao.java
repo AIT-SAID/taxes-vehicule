@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TaxeVehiculeAnnuelleDao extends JpaRepository<TaxeVehiculeAnnuelle, Long>{
     
-    public TaxeVehiculeAnnuelle findByReference(String reference);
+    
+     public TaxeVehiculeAnnuelle findByVehiculeReferenceAndAnnee(String reference, int annee);
     
 }

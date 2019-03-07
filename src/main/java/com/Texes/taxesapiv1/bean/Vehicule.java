@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -18,6 +19,9 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Vehicule implements Serializable {
+
+    @OneToOne(mappedBy = "vehicule")
+    private TaxeVehiculeAnnuelle taxeVehiculeAnnuelle;
 
     private static final long serialVersionUID = 1L;
     @Id

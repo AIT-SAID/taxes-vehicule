@@ -16,7 +16,7 @@ import java.util.List;
 public interface VehiculeService {
     public List<Vehicule> findByTypeVehiculeReference(String reference);
     public int creerVehicule(Vehicule vehicule);
-    public Vehicule FindByReference(String reference);
+    public Vehicule findByReference(String reference);
    
     
 }

@@ -28,6 +28,8 @@ public class TauxTaxeVehicule implements Serializable {
 
     @OneToOne(mappedBy = "tauxTaxeVehicule")
     private TaxeVehiculeMensuelle taxeVehiculeMensuelle;
+    @OneToOne(mappedBy = "tauxTaxeVehicule")
+    private TaxeVehiculeAnnuelle taxeVehiculeAnnuelle;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -39,10 +41,38 @@ public class TauxTaxeVehicule implements Serializable {
     private Date dateDebut;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateFin;
+    private double penalite;
+    private double majoration;
     
     @ManyToOne
     private TypeVehicule typeVehicule;
 
+    public double getPenalite() {
+        return penalite;
+    }
+
+    public void setPenalite(long penalite) {
+        this.penalite = penalite;
+    }
+
+    public double getMajoration() {
+        return majoration;
+    }
+
+    public void setMajoration(long majoration) {
+        this.majoration = majoration;
+    }
+
+    
+    public TaxeVehiculeAnnuelle getTaxeVehiculeAnnuelle() {
+        return taxeVehiculeAnnuelle;
+    }
+
+    public void setTaxeVehiculeAnnuelle(TaxeVehiculeAnnuelle taxeVehiculeAnnuelle) {
+        this.taxeVehiculeAnnuelle = taxeVehiculeAnnuelle;
+    }
+
+    
     public TaxeVehiculeMensuelle getTaxeVehiculeMensuelle() {
         return taxeVehiculeMensuelle;
     }

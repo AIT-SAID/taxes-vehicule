@@ -13,7 +13,6 @@ import com.Texes.taxesapiv1.bean.TaxeVehiculeMensuelle;
  */
 public interface TaxeVehiculeMensuelleService {
     public int creerTaxeMensuelle(TaxeVehiculeMensuelle tauxVehiculeTrimestrielle);
-    public TaxeVehiculeMensuelle findByReference(String reference);
     public TaxeVehiculeMensuelle findByMoisAndAnnee(int mois,int annee);
 
     

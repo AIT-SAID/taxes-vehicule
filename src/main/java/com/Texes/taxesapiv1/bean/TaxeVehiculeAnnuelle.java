@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -24,7 +25,6 @@ public class TaxeVehiculeAnnuelle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String reference;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date datePresentation;
     private double chiffreAffaire;
@@ -34,14 +34,43 @@ public class TaxeVehiculeAnnuelle implements Serializable {
     private double montantTaxe;
     private int nomberMoisRestant;
     
-
-   
-    public String getReference() {
-        return reference;
+    @OneToOne
+    private TauxTaxeVehicule tauxTaxeVehicule;
+    private int mois;
+    private int annee;
+    @OneToOne
+    private Vehicule vehicule;
+    public TauxTaxeVehicule getTauxTaxeVehicule() {
+        return tauxTaxeVehicule;
     }
 
-    public void setReference(String reference) {
-        this.reference = reference;
+ 
+    public Vehicule getVehicule() {
+        return vehicule;
+    }
+
+    public void setVehicule(Vehicule vehicule) {
+        this.vehicule = vehicule;
+    }
+    
+    public void setTauxTaxeVehicule(TauxTaxeVehicule tauxTaxeVehicule) {
+        this.tauxTaxeVehicule = tauxTaxeVehicule;
+    }
+
+    public int getMois() {
+        return mois;
+    }
+
+    public void setMois(int mois) {
+        this.mois = mois;
+    }
+
+    public int getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(int annee) {
+        this.annee = annee;
     }
 
     public Date getDatePresentation() {

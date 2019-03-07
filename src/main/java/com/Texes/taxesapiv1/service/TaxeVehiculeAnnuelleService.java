@@ -13,6 +13,6 @@ import com.Texes.taxesapiv1.bean.TaxeVehiculeAnnuelle;
  */
 public interface TaxeVehiculeAnnuelleService {
     
-//    public int creerTauxAnnuelle(TauxVehiculeAnnuelle tauxVehiculeAnnuelle);
-//    public TauxVehiculeAnnuelle findByReference(String reference);
+public int creerTaxe(TaxeVehiculeAnnuelle taxeVehiculeAnnuelle);
+ public TaxeVehiculeAnnuelle findByVehiculeReferenceAndAnnee(String reference, int annee);
 }

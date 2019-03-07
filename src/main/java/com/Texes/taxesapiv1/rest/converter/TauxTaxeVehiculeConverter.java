@@ -35,7 +35,13 @@ public class TauxTaxeVehiculeConverter extends AbstractConverter<TauxTaxeVehicul
                 item.setDateFin(DateUtil.parseYYYYMMDDmmhhSS(vo.getDateFin()));
             }
 
-            if (vo.getPourcentage() != null) {
+            if (vo.getMajoration()!= null) {
+                item.setMajoration(NumberUtil.toDouble(vo.getMajoration()));
+            }
+             if (vo.getPenalite()!= null) {
+                item.setPenalite(NumberUtil.toDouble(vo.getPenalite()));
+            }
+              if (vo.getPourcentage() != null) {
                 item.setPourcentage(NumberUtil.toDouble(vo.getPourcentage()));
             }
 
@@ -62,6 +68,12 @@ public class TauxTaxeVehiculeConverter extends AbstractConverter<TauxTaxeVehicul
 
             if (item.getPourcentage() != 0) {
                 vo.setPourcentage(NumberUtil.toString(item.getPourcentage()));
+            }
+            if (item.getMajoration()!= 0) {
+                vo.setMajoration(NumberUtil.toString(item.getMajoration()));
+            }
+            if (item.getPenalite()!= 0) {
+                vo.setPenalite(NumberUtil.toString(item.getPenalite()));
             }
 
             return vo;

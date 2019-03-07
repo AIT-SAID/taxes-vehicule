@@ -17,33 +17,28 @@ import com.Texes.taxesapiv1.service.TaxeVehiculeAnnuelleService;
  *
  * @author saida
  */
-//@RestController
-//@RequestMapping("/taxes-api-v1/taxeAnnuelles")
+@RestController
+@RequestMapping("/taxes_vehicule/taxeAnnuelles")
 public class TaxeVehiculeAnnuelleRest {
     
-//    @Autowired
-//    private TauxVehiculeAnnuelleService tauxVehiculeAnnuelleService;
-//
-//    @PostMapping("/")
-//    public int creerTauxAnnuelle(TauxVehiculeAnnuelle tauxVehiculeAnnuelle) {
-//        return tauxVehiculeAnnuelleService.creerTauxAnnuelle(tauxVehiculeAnnuelle);
-//    }
-//
-//    @GetMapping("/reference/{reference}")
-//    public TauxVehiculeAnnuelle findByReference(String reference) {
-//        return tauxVehiculeAnnuelleService.findByReference(reference);
-//    }
+    @Autowired
+    private TaxeVehiculeAnnuelleService taxeVehiculeAnnuelleService;
 
+     @GetMapping("/reference/{reference}")
+    public TaxeVehiculeAnnuelle findByVehiculeReferenceAndAnnee(String reference, int annee) {
+        return taxeVehiculeAnnuelleService.findByVehiculeReferenceAndAnnee(reference, annee);
+    }
+    @PostMapping("/")
+    public int creerTaxe(TaxeVehiculeAnnuelle taxeVehiculeAnnuelle) {
+        return taxeVehiculeAnnuelleService.creerTaxe(taxeVehiculeAnnuelle);
+    }
+
+    public void setTauxVehiculeAnnuelleService(TaxeVehiculeAnnuelleService taxeVehiculeAnnuelleService) {
+        this.taxeVehiculeAnnuelleService = taxeVehiculeAnnuelleService;
+    }
+    public TaxeVehiculeAnnuelleService getTaxeVehiculeAnnuelleService() {
+        return taxeVehiculeAnnuelleService;    }
     
     
-//    public TauxVehiculeAnnuelleService getTauxVehiculeAnnuelleService() {
-//        return tauxVehiculeAnnuelleService;
-//    }
-//
-//    public void setTauxVehiculeAnnuelleService(TauxVehiculeAnnuelleService tauxVehiculeAnnuelleService) {
-//        this.tauxVehiculeAnnuelleService = tauxVehiculeAnnuelleService;
-//    }
-//    
-//    
     
 }

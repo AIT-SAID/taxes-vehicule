@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author saida
  */
 @RestController
+
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RequestMapping("/taxes_vehicule/typeVehicules")
 public class TypeVehiculeRest {

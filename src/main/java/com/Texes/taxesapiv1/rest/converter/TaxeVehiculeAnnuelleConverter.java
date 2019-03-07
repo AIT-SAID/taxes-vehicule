@@ -7,23 +7,20 @@ package com.Texes.taxesapiv1.rest.converter;
 
 import com.Texes.taxesapiv1.Common.util.DateUtil;
 import com.Texes.taxesapiv1.Common.util.NumberUtil;
-import com.Texes.taxesapiv1.bean.TaxeVehiculeMensuelle;
-import com.Texes.taxesapiv1.rest.vo.TaxeVehiculeMensuelleVo;
-import org.springframework.stereotype.Component;
+import com.Texes.taxesapiv1.bean.TaxeVehiculeAnnuelle;
+import com.Texes.taxesapiv1.rest.vo.TauxTaxeVehiculeVo;
+import com.Texes.taxesapiv1.rest.vo.TaxeVehiculeAnnuelleVo;
 
 /**
  *
  * @author saida
  */
-@Component
-public class TaxeVehiculeMensuelleConverter extends AbstractConverter<TaxeVehiculeMensuelle,TaxeVehiculeMensuelleVo>{
-    
-    
+public class TaxeVehiculeAnnuelleConverter extends AbstractConverter<TaxeVehiculeAnnuelle, TaxeVehiculeAnnuelleVo>{
+
     @Override
-    public TaxeVehiculeMensuelle toItem(TaxeVehiculeMensuelleVo vo) {
-          
+    public TaxeVehiculeAnnuelle toItem(TaxeVehiculeAnnuelleVo vo) {
         if (vo != null) {
-            TaxeVehiculeMensuelle item = new TaxeVehiculeMensuelle();
+            TaxeVehiculeAnnuelle item = new TaxeVehiculeAnnuelle();
             
            
             if (vo.getChiffreAffaire()!= null) {
@@ -41,11 +38,11 @@ public class TaxeVehiculeMensuelleConverter extends AbstractConverter<TaxeVehicu
             if (vo.getMontantTaxe()!= null) {
                 item.setMontantTaxe(NumberUtil.toDouble(vo.getMontantTaxe()));
             }
-            if (vo.getNomberMoisRetard()!= null) {
-                item.setNomberMoisRetard(NumberUtil.toInt(vo.getNomberMoisRetard()));
+            if (vo.getNomberMoisRestant()!= null) {
+                item.setNomberMoisRestant(NumberUtil.toInt(vo.getNomberMoisRestant()));
             }
             if (vo.getDatePresentation()!= null) {
-                item.setDatePresentation(DateUtil.parseYYYYMMDDmmhhSS(vo.getDatePresentation()));
+                item.setDatePresentation(DateUtil.parse(vo.getDatePresentation(),DateUtil.paternYYYY_MM_DD));
             }
        
             return item;
@@ -54,9 +51,9 @@ public class TaxeVehiculeMensuelleConverter extends AbstractConverter<TaxeVehicu
     }
 
     @Override
-    public TaxeVehiculeMensuelleVo toVo(TaxeVehiculeMensuelle item) {
-          if (item != null) {
-            TaxeVehiculeMensuelleVo vo = new TaxeVehiculeMensuelleVo();
+    public TaxeVehiculeAnnuelleVo toVo(TaxeVehiculeAnnuelle item) {
+        if (item != null) {
+            TaxeVehiculeAnnuelleVo vo = new TaxeVehiculeAnnuelleVo();
              
 
             if (item.getChiffreAffaire()!= 0) {
@@ -74,8 +71,8 @@ public class TaxeVehiculeMensuelleConverter extends AbstractConverter<TaxeVehicu
             if (item.getMontantTaxe()!= 0) {
                 vo.setMontantTaxe(NumberUtil.toString(item.getMontantTaxe()));
             }
-            if (item.getNomberMoisRetard()!= 0) {
-                vo.setNomberMoisRetard(NumberUtil.toString(item.getNomberMoisRetard()));
+            if (item.getNomberMoisRestant()!= 0) {
+                vo.setNomberMoisRestant(NumberUtil.toString(item.getNomberMoisRestant()));
             }
             if (item.getDatePresentation()!= null) {
                 vo.setDatePresentation(DateUtil.formatYYYYMMDDmmhhSS(item.getDatePresentation()));
@@ -85,5 +82,6 @@ public class TaxeVehiculeMensuelleConverter extends AbstractConverter<TaxeVehicu
         }
         return null;
     }
+    }
     
-}
+

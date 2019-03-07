@@ -23,6 +23,24 @@ public class TauxTaxeVehiculeVo implements Serializable {
     private String reference;
     private String dateDebut;
     private String dateFin;
+    private String penalite;
+    private String majoration;
+
+    public String getPenalite() {
+        return penalite;
+    }
+
+    public void setPenalite(String penalite) {
+        this.penalite = penalite;
+    }
+
+    public String getMajoration() {
+        return majoration;
+    }
+
+    public void setMajoration(String majoration) {
+        this.majoration = majoration;
+    }
 
     
 

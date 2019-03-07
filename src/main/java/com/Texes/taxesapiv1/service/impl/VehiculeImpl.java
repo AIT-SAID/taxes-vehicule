@@ -29,7 +29,7 @@ public class VehiculeImpl implements VehiculeService {
 
     @Override
     public int creerVehicule(Vehicule vehicule) {
-        Vehicule v  =FindByReference(vehicule.getReference());
+        Vehicule v  =findByReference(vehicule.getReference());
                 if(v!=null){
     return -1 ;}else  {
             vehiculeDao.save(vehicule);}
@@ -38,15 +38,14 @@ public class VehiculeImpl implements VehiculeService {
     }
 
     @Override
-    public Vehicule FindByReference(String reference) {
-        return vehiculeDao.findByReference(reference);
-    }
-
-    @Override
     public List<Vehicule> findByTypeVehiculeReference(String reference) {
         return vehiculeDao.findByTypeVehiculeReference(reference);
     }
 
+    @Override
+    public Vehicule findByReference(String reference) {
+        return vehiculeDao.findByReference(reference);
+    }
     public VehiculeDao getVehiculedao() {
         return vehiculeDao;
     }
@@ -70,5 +69,7 @@ public class VehiculeImpl implements VehiculeService {
     public void setRedevableProxy(RedevableProxy redevableProxy) {
         this.redevableProxy = redevableProxy;
     }
+
+    
 
 }

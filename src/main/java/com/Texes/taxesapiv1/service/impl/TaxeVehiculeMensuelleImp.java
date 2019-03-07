@@ -76,10 +76,7 @@ public class TaxeVehiculeMensuelleImp implements TaxeVehiculeMensuelleService {
        return taxeVehiculeMensuelleDao.findByMoisAndAnnee(mois, annee);
    }
 
-    @Override
-    public TaxeVehiculeMensuelle findByReference(String reference) {
-        return taxeVehiculeMensuelleDao.findByReference(reference);
-    }
+   
     
 //    @Override
 //    public TaxeVehiculeMensuelle findByMoisAndAnnee(int mois, int annee) {
